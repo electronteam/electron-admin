@@ -1,4 +1,4 @@
-import {OrdersView} from "./components/OrdersView";
+import OrdersView from "./components/OrdersView";
 import {ProductsView} from "./components/ProductsView";
 import {UsersView} from "./components/UsersView";
 
@@ -26,5 +26,8 @@ export const properties = {
                 component: UsersView
             }
         ]
+    },
+    api: {
+        allOrders: "/api/admin/orders"
     }
 };
