@@ -214,3 +214,53 @@ img
     color: rgba(0,0,0,0.6);
 }
 
+.button
+{
+    display: inline-block;
+    background: var(--site-specific-color);
+    border-radius: 5px;
+    height: 48px;
+    -webkit-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.button a
+{
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #FFFFFF;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.button:hover
+{
+    opacity: 0.8;
+}
+
+.button_container
+{
+    margin-top: 43px;
+}
+
+.generic_button
+{
+    display: inline-block;
+    border: none;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 48px;
+    color: #FFFFFF;
+    padding-left: 35px;
+    padding-right: 35px;
+    outline: none;
+    cursor: pointer;
+}
+.generic_button:focus
+{
+    outline: none;
+}

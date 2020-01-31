@@ -28,6 +28,10 @@ export const properties = {
         ]
     },
     api: {
-        allOrders: "/api/admin/orders"
+        allOrders: "/api/admin/orders",
+        login: "/login"
+    },
+    buttons: {
+        login: "Intră",
     }
 };

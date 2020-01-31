@@ -2,8 +2,8 @@ import React from 'react';
 import './styles/App.css';
 
 import {TopBar} from "./components/TopBar";
-import {HeaderMainMenu} from "./components/HeaderMainMenu";
 import {Footer} from "./components/Footer";
+import Login from "./components/Login";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 function App()
@@ -12,7 +12,7 @@ function App()
           <MuiThemeProvider>
             <div>
               <TopBar/>
-              <HeaderMainMenu/>
+              <Login/>
               <Footer/>
             </div>
           </MuiThemeProvider>

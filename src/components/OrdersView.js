@@ -13,8 +13,10 @@ class OrdersView extends Component {
     componentDidMount()
     {
         let api = properties.api.allOrders;
+        // Read the token from the session storage // and include it to Authorization header
+        const token = sessionStorage.getItem("jwt");
 
-        fetch(api)
+        fetch(api, {headers: {'Authorization': token} })
                 .then(response => response.json())
                 .then(response => {
                     this.setState({
@@ -30,6 +32,7 @@ class OrdersView extends Component {
     {
         return (
                 <div className="container text-center">
+                    {this.state.orders.length > 0 ?
                     <table className="table">
                         <thead>
                         <tr>
@@ -52,6 +55,9 @@ class OrdersView extends Component {
                         })}
                         </tbody>
                     </table>
+                    :
+                    <h1>No Orders</h1>
+                    }
                 </div>
         );
     }
