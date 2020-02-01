@@ -27,11 +27,15 @@ export const properties = {
             }
         ]
     },
+    login: {
+        namePlaceHolder: "Nume",
+        passwordPlaceHolder: "Parolă"
+    },
     api: {
         allOrders: "/api/admin/orders",
         login: "/login"
     },
     buttons: {
-        login: "Intră",
+        login: "Autentificare",
     }
 };
