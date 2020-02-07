@@ -1,5 +1,5 @@
 import OrdersView from "./components/OrdersView";
-import {ProductsView} from "./components/ProductsView";
+import ProductsView from "./components/ProductsView";
 import {UsersView} from "./components/UsersView";
 
 export const properties = {
@@ -27,12 +27,19 @@ export const properties = {
             }
         ]
     },
+    ordersView: {
+        noOrdersDisplayText: "Nu a fost plasată nici o comandă",
+    },
+    productsView: {
+        noProductsDisplayText: "Nu a fost adaugat nici un produs",
+    },
     login: {
         namePlaceHolder: "Nume",
         passwordPlaceHolder: "Parolă"
     },
     api: {
         allOrders: "/api/admin/orders",
+        products: "/api/admin/products",
         login: "/login"
     },
     buttons: {
