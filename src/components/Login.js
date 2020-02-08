@@ -9,7 +9,7 @@ class Login extends Component {
     {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: '',
             isAuthenticated: false
         };
@@ -20,7 +20,7 @@ class Login extends Component {
     }
 
     login = () => {
-        const user = {username: this.state.username, password: this.state.password};
+        const user = {email: this.state.email, password: this.state.password};
         let api = properties.api.login;
 
         fetch(api, {
@@ -52,11 +52,11 @@ class Login extends Component {
                             <div className="login">
                                 <div className="login_input">
                                     <input type="text" className="generic_input" size="30"
-                                           id="username"
-                                           name="username"
+                                           id="email"
+                                           name="email"
                                            required="required"
                                            onChange={this.handleChange}
-                                           placeholder={properties.login.namePlaceHolder}/>
+                                           placeholder={properties.login.emailPlaceHolder}/>
                                 </div>
                                 <div className="login_input">
                                     <input type="password" className="generic_input" size="30"

@@ -37,9 +37,9 @@ class OrdersView extends Component {
                         <thead>
                         <tr>
                             <th scope="col">Order Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">Total Price</th>
+                            <th scope="col" className="text-left">Name</th>
+                            <th scope="col" className="text-left">Last Name</th>
+                            <th scope="col" className="text-left">Total Price</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,16 +47,16 @@ class OrdersView extends Component {
                             return (
                                     <tr key={index}>
                                         <th scope="row">{order.id}</th>
-                                        <td>{order.userName}</td>
-                                        <td>{order.userLastName}</td>
-                                        <td>{order.totalPrice}</td>
+                                        <td className="text-left">{order.userName}</td>
+                                        <td className="text-left">{order.userLastName}</td>
+                                        <td className="text-left">{order.totalPrice}</td>
                                     </tr>
                             )
                         })}
                         </tbody>
                     </table>
                     :
-                    <h1>No Orders</h1>
+                    <h1>{properties.ordersView.noOrdersDisplayText}</h1>
                     }
                 </div>
         );
