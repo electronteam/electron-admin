@@ -34,7 +34,7 @@ export const properties = {
         noProductsDisplayText: "Nu a fost adaugat nici un produs",
     },
     login: {
-        namePlaceHolder: "Nume",
+        emailPlaceHolder: "Email",
         passwordPlaceHolder: "Parolă"
     },
     api: {
