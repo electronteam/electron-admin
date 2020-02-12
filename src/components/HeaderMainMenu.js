@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import {properties} from '../properties.js';
+import OrderDetails from "./OrderDetails";
 
 export function HeaderMainMenu()
 {
@@ -40,6 +41,8 @@ export function HeaderMainMenu()
                 {properties.header.links.map((link, index) => {
                     return <Route path={link.path} exact={true} component={link.component} key={index}/>
                 })}
+
+                <Route path={properties.orderDetails.path + ":" + properties.orderDetails.paramName} component={OrderDetails}/>
             </BrowserRouter>
     );
 }
