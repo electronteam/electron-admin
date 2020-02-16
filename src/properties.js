@@ -1,6 +1,6 @@
 import OrdersView from "./components/OrdersView";
 import ProductsView from "./components/ProductsView";
-import {UsersView} from "./components/UsersView";
+import UsersView from "./components/UsersView";
 
 export const properties = {
     contacts: {
@@ -36,6 +36,15 @@ export const properties = {
         createdDate: "Data creării",
         viewDetails: "Vezi Detaliile"
     },
+    usersView: {
+        noUserDisplayText: "Nu a fost gasit nici un utilizator",
+        name: "Prenume client",
+        lastName: "Nume client",
+        email: "Email client",
+        address: "Addressa client",
+        phone: "Telefon client",
+        role: "Rolurile utilizatorului"
+    },
     orderDetails: {
         path: "/order/",
         paramName: "orderId",
@@ -64,6 +73,7 @@ export const properties = {
     },
     api: {
         allOrders: "/api/admin/orders",
+        allUsers: "/api/admin/users",
         products: "/api/admin/products",
         orderByCode: "/api/admin/order",
         login: "/login"
