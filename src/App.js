@@ -1,22 +1,54 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './styles/App.css';
 
 import {TopBar} from "./components/TopBar";
 import {Footer} from "./components/Footer";
 import Login from "./components/Login";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {HeaderMainMenu} from "./components/HeaderMainMenu";
 
-function App()
-{
-  return (
-          <MuiThemeProvider>
-            <div>
-              <TopBar/>
-              <Login/>
-              <Footer/>
-            </div>
-          </MuiThemeProvider>
-  );
+class App extends Component {
+    constructor(props)
+    {
+        super(props);
+
+        // Bind the this context to the handler function
+        this.authenticate = this.authenticate.bind(this);
+
+        this.state = {
+            isAuthenticated: false
+        };
+    }
+
+    authenticate()
+    {
+        this.setState({isAuthenticated: true});
+    }
+
+    render()
+    {
+        if (this.state.isAuthenticated === true)
+        {
+            return (
+                    <MuiThemeProvider>
+                        <div>
+                            <TopBar/>
+                            <HeaderMainMenu/>
+                            <Footer/>
+                        </div>
+                    </MuiThemeProvider>
+            );
+        }
+        else
+        {
+            return (
+                    <div>
+                        <TopBar/>
+                        <Login action = {this.authenticate}/>
+                    </div>
+            );
+        }
+    }
 }
 
 export default App;
