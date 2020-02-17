@@ -20,9 +20,20 @@ class App extends Component {
         };
     }
 
-    authenticate()
+    authenticate(token)
     {
+        sessionStorage.setItem("jwt", token);
+        sessionStorage.setItem("isAuthenticated", "yes");
         this.setState({isAuthenticated: true});
+    }
+
+    componentDidMount()
+    {
+        const authenticated  = sessionStorage.getItem("isAuthenticated");
+        if (authenticated === "yes")
+        {
+            this.setState({isAuthenticated: true});
+        }
     }
 
     render()

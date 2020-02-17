@@ -29,8 +29,7 @@ class Login extends Component {
                     const jwtToken = res.headers.get('Authorization');
                     if (jwtToken !== null)
                     {
-                        sessionStorage.setItem("jwt", jwtToken);
-                        this.props.action();
+                        this.props.action(jwtToken);
                     }
                 })
                 .catch(err => console.error(err))
