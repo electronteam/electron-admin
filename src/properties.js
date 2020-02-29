@@ -38,11 +38,11 @@ export const properties = {
     },
     usersView: {
         noUserDisplayText: "Nu a fost gasit nici un utilizator",
-        name: "Prenume client",
-        lastName: "Nume client",
-        email: "Email client",
-        address: "Addressa client",
-        phone: "Telefon client",
+        name: "Prenume utilizator",
+        lastName: "Nume utilizator",
+        email: "Email utilizator",
+        address: "Addressa utilizator",
+        phone: "Telefon utilizator",
         role: "Rolurile utilizatorului"
     },
     orderDetails: {
