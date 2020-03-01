@@ -72,11 +72,11 @@ export const properties = {
         passwordPlaceHolder: "Parolă"
     },
     api: {
-        allOrders: "/api/admin/orders",
-        allUsers: "/api/admin/users",
-        products: "/api/admin/products",
-        orderByCode: "/api/admin/order",
-        login: "/login"
+        allOrders: "http://localhost:8080/api/admin/orders",
+        allUsers: "http://localhost:8080/api/admin/users",
+        products: "http://localhost:8080/api/admin/products",
+        orderByCode: "http://localhost:8080/api/admin/order",
+        login: "http://localhost:8080/login"
     },
     buttons: {
         login: "Autentificare",
