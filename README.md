@@ -68,3 +68,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
 npm install - Install the dependencies in the local node_modules folder.
+
+
+
+## Dockerization
+
+## Building the container
+docker build -t  rbaroncea/electron-admin .
+
+## Running the container
+docker run -p 3001:80 --network=electron-network --name=electron-admin rbaroncea/electron-admin
