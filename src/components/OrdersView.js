@@ -56,7 +56,7 @@ class OrdersView extends Component {
                                     <th scope="col" className="text-left">{properties.ordersView.customerLastName}</th>
                                     <th scope="col" className="text-left">{properties.ordersView.totalPrice}</th>
                                     <th scope="col" className="text-left">{properties.ordersView.createdDate}</th>
-                                    <th scope="col"></th>
+                                    <th scope="col" className="text-center">{properties.ordersView.action}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

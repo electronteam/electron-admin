@@ -27,8 +27,9 @@ class Login extends Component {
             body: JSON.stringify(user)
         })
                 .then(res => {
-                    if(res.status===401){
-                        this.setState({ hasLoginFailed: true })
+                    if (res.status === 401)
+                    {
+                        this.setState({hasLoginFailed: true})
                     }
                     const jwtToken = res.headers.get('Authorization');
                     if (jwtToken !== null)
@@ -37,7 +38,7 @@ class Login extends Component {
                     }
                 })
                 .catch(err => {
-                   console.log(err);
+                    console.log(err);
                 })
     };
 
@@ -45,7 +46,9 @@ class Login extends Component {
     {
         return (
                 <div className="container text-center">
-                    {this.state.hasLoginFailed && <div className="alert alert-danger">Invalid Credentials</div>}
+                    <div className="row justify-content-center">
+                        {this.state.hasLoginFailed && <div className="alert alert-danger invalid_credentials">{properties.login.invalidCredentialsText}</div>}
+                    </div>
                     <div className="row justify-content-center">
                         <div className="login">
                             <div className="login_input">

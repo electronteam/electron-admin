@@ -34,7 +34,8 @@ export const properties = {
         customerLastName: "Nume client",
         totalPrice: "Total comandă",
         createdDate: "Data creării",
-        viewDetails: "Vezi Detaliile"
+        viewDetails: "Vezi Detaliile",
+        action: "Acțiune"
     },
     usersView: {
         noUserDisplayText: "Nu a fost gasit nici un utilizator",
@@ -69,7 +70,8 @@ export const properties = {
     },
     login: {
         emailPlaceHolder: "Email",
-        passwordPlaceHolder: "Parolă"
+        passwordPlaceHolder: "Parolă",
+        invalidCredentialsText: "Datele de autentificare sunt invalide"
     },
     api: {
         allOrders: "http://localhost:8080/api/admin/orders",
@@ -80,5 +82,6 @@ export const properties = {
     },
     buttons: {
         login: "Autentificare",
+        logout: "Deconectare",
     }
 };
