@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './styles/App.css';
 
-import {TopBar} from "./components/TopBar";
+import TopBar from "./components/TopBar";
 import {Footer} from "./components/Footer";
 import Login from "./components/Login";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -14,6 +14,7 @@ class App extends Component {
 
         // Bind the this context to the handler function
         this.authenticate = this.authenticate.bind(this);
+        this.logout = this.logout.bind(this);
 
         this.state = {
             isAuthenticated: false
@@ -25,6 +26,12 @@ class App extends Component {
         sessionStorage.setItem("jwt", token);
         sessionStorage.setItem("isAuthenticated", "yes");
         this.setState({isAuthenticated: true});
+    }
+
+    logout() {
+        sessionStorage.removeItem("isAuthenticated");
+        sessionStorage.removeItem("jwt");
+        this.setState({isAuthenticated: false});
     }
 
     componentDidMount()
@@ -43,7 +50,7 @@ class App extends Component {
             return (
                     <MuiThemeProvider>
                         <div>
-                            <TopBar/>
+                            <TopBar action={this.logout} isAuth={this.state.isAuthenticated}/>
                             <HeaderMainMenu/>
                             <Footer/>
                         </div>
@@ -54,7 +61,7 @@ class App extends Component {
         {
             return (
                     <div>
-                        <TopBar/>
+                        <TopBar isAuth={this.state.isAuthenticated}/>
                         <Login action = {this.authenticate}/>
                     </div>
             );

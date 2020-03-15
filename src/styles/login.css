@@ -9,6 +9,16 @@
     border-radius: 10px;
 }
 
+.invalid_credentials
+{
+    width: 400px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+}
+
 .login_input
 {
     margin-bottom: 15px;
