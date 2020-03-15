@@ -10,12 +10,13 @@ class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            hasLoginFailed: false,
         };
     }
 
     handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
-    }
+    };
 
     login = () => {
         const user = {email: this.state.email, password: this.state.password};
@@ -26,19 +27,25 @@ class Login extends Component {
             body: JSON.stringify(user)
         })
                 .then(res => {
+                    if(res.status===401){
+                        this.setState({ hasLoginFailed: true })
+                    }
                     const jwtToken = res.headers.get('Authorization');
                     if (jwtToken !== null)
                     {
                         this.props.action(jwtToken);
                     }
                 })
-                .catch(err => console.error(err))
-    }
+                .catch(err => {
+                   console.log(err);
+                })
+    };
 
     render()
     {
         return (
                 <div className="container text-center">
+                    {this.state.hasLoginFailed && <div className="alert alert-danger">Invalid Credentials</div>}
                     <div className="row justify-content-center">
                         <div className="login">
                             <div className="login_input">
