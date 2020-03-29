@@ -67,6 +67,16 @@ export const properties = {
     },
     productsView: {
         noProductsDisplayText: "Nu a fost adaugat nici un produs",
+        id: "Identificatorul",
+        name: "Nume produs",
+        price: "Preț",
+        viewDetails: "Vezi Detaliile",
+        action: "Acțiune"
+    },
+    productDetails: {
+        path: "/product/",
+        paramName: "productId",
+        productNotFoundDisplayText: "Nu a fost gasit produsul"
     },
     login: {
         emailPlaceHolder: "Email",
@@ -78,6 +88,7 @@ export const properties = {
         allUsers: "http://localhost:8080/api/admin/users",
         products: "http://localhost:8080/api/admin/products",
         orderByCode: "http://localhost:8080/api/admin/order",
+        productByCode: "http://localhost:8080/api/product",
         login: "http://localhost:8080/login"
     },
     buttons: {

@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import {properties} from '../properties.js';
 import OrderDetails from "./OrderDetails";
+import ProductDetails from "./ProductDetails";
 
 export function HeaderMainMenu()
 {
@@ -43,6 +44,7 @@ export function HeaderMainMenu()
                 })}
 
                 <Route path={properties.orderDetails.path + ":" + properties.orderDetails.paramName} component={OrderDetails}/>
+                <Route path={properties.productDetails.path + ":" + properties.productDetails.paramName} component={ProductDetails}/>
             </BrowserRouter>
     );
 }

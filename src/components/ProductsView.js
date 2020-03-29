@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import {properties} from '../properties.js';
+import {Redirect} from 'react-router-dom';
 
 class ProductsView extends Component {
     constructor()
     {
         super();
         this.state = {
-            products: []
+            products: [],
+            toProductDetails: false,
+            selectedProductId: ''
         };
     }
 
@@ -28,17 +31,31 @@ class ProductsView extends Component {
                 });
     }
 
+    viewProductDetails(productId)
+    {
+        this.setState(() => ({toProductDetails: true, selectedProductId: productId}));
+    }
+
     render()
     {
+        if (this.state.toProductDetails === true)
+        {
+            return <Redirect to={{
+                pathname: properties.productDetails.path + this.state.selectedProductId,
+            }}/>
+        }
+
         return (
                 <div className="container text-center">
                     {this.state.products.length > 0 ?
                             <table className="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Code</th>
-                                    <th scope="col" className="text-left">Name</th>
-                                    <th scope="col" className="text-left">Price</th>
+                                    <th scope="col">{properties.productsView.id}</th>
+                                    <th scope="col" className="text-left">{properties.productsView.name}</th>
+                                    <th scope="col" className="text-left">{properties.productsView.price}</th>
+                                    <th scope="col" className="text-center">{properties.productsView.action}</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +65,12 @@ class ProductsView extends Component {
                                                 <th scope="row">{product.code}</th>
                                                 <td className="text-left">{product.name}</td>
                                                 <td className="text-left">{product.price}</td>
+                                                <td className="text-center">
+                                                    <button type="button" className="button generic_button"
+                                                            onClick={() => this.viewProductDetails(product.code)}>
+                                                        {properties.productsView.viewDetails}
+                                                    </button>
+                                                </td>
                                             </tr>
                                     )
                                 })}
