@@ -42,7 +42,22 @@ class ProductDetails extends Component {
         return (
                 <div className="container text-center">
                     {this.state.product ?
-                            <h2>Detaliile produsului - {this.state.product.name}</h2>
+                            <div>
+                                <h2>Detaliile produsului - {this.state.product.name}</h2>
+
+                                <form method="POST" encType="multipart/form-data" action={properties.api.uploadProductImage + this.state.product.code}>
+                                    <table>
+                                        <tr>
+                                            <td>File to upload:</td>
+                                            <td><input type="file" name="file"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td><input type="submit" value="Upload"/></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
                             :
                             <h2>{properties.productDetails.productNotFoundDisplayText}</h2>
                     }

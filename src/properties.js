@@ -89,6 +89,7 @@ export const properties = {
         products: "http://localhost:8080/api/admin/products",
         orderByCode: "http://localhost:8080/api/admin/order",
         productByCode: "http://localhost:8080/api/product",
+        uploadProductImage: "http://localhost:8080/api/upload/productImage/",
         login: "http://localhost:8080/login"
     },
     buttons: {
