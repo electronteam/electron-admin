@@ -37,6 +37,33 @@ class ProductDetails extends Component {
         console.log(product);
     }
 
+    uploadFile()
+    {
+        var data = new FormData();
+        var imagedata = document.querySelector('input[type="file"]').files[0];
+        data.append("file", imagedata);
+        const token = sessionStorage.getItem("jwt");
+        let api = properties.api.uploadProductImage + this.state.product.code;
+
+        fetch(api, {
+            mode: 'no-cors',
+            method: "POST",
+            headers: {'Authorization': token},
+            body: data
+        }).then(function (res) {
+            if (res.ok)
+            {
+                alert("Perfect! ");
+            }
+            else if (res.status == 401)
+            {
+                alert("Oops! ");
+            }
+        }, function (e) {
+            alert("Error submitting form!");
+        });
+    }
+
     render()
     {
         return (
@@ -44,8 +71,6 @@ class ProductDetails extends Component {
                     {this.state.product ?
                             <div>
                                 <h2>Detaliile produsului - {this.state.product.name}</h2>
-
-                                <form method="POST" encType="multipart/form-data" action={properties.api.uploadProductImage + this.state.product.code}>
                                     <table>
                                         <tr>
                                             <td>File to upload:</td>
@@ -53,10 +78,11 @@ class ProductDetails extends Component {
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td><input type="submit" value="Upload"/></td>
+                                            <td>
+                                                <input type="button" value="Upload" onClick={this.uploadFile.bind(this)}/>
+                                            </td>
                                         </tr>
                                     </table>
-                                </form>
                             </div>
                             :
                             <h2>{properties.productDetails.productNotFoundDisplayText}</h2>
