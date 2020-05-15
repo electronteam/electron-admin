@@ -76,7 +76,8 @@ export const properties = {
     productDetails: {
         path: "/product/",
         paramName: "productId",
-        productNotFoundDisplayText: "Nu a fost gasit produsul"
+        productNotFoundDisplayText: "Nu a fost gasit produsul",
+        uploadProductImage: "Încarcă altă imagine"
     },
     login: {
         emailPlaceHolder: "Email",
@@ -89,8 +90,12 @@ export const properties = {
         products: "http://localhost:8080/api/admin/products",
         orderByCode: "http://localhost:8080/api/admin/order",
         productByCode: "http://localhost:8080/api/product",
+        getProductImage: "http://localhost:8080/api/productImage",
         uploadProductImage: "http://localhost:8080/api/upload/productImage/",
         login: "http://localhost:8080/login"
+    },
+    url: {
+        imageServerURL: "http://localhost:8080/"
     },
     buttons: {
         login: "Autentificare",
