@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import '../styles/orderdetails.css';
-import {properties} from '../properties.js';
+import '../../styles/orderdetails.css';
+import {properties} from '../../properties.js';
 
 class OrderDetails extends Component {
 

@@ -1,6 +1,6 @@
-import OrdersView from "./components/OrdersView";
-import ProductsView from "./components/ProductsView";
+import ProductsView from "./components/Products/ProductsView";
 import UsersView from "./components/UsersView";
+import OrdersView from "./components/Orders/OrdersView";
 
 export const properties = {
     contacts: {

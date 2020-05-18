@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {properties} from "../properties";
+import {properties} from "../../properties";
 
 class ProductDetails extends Component {
 

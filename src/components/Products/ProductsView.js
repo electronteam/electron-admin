@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {properties} from '../properties.js';
+import {properties} from '../../properties.js';
 import {Redirect} from 'react-router-dom';
 
 class ProductsView extends Component {
