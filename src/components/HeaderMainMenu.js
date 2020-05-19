@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, Link, Route} from 'react-router-dom';
 import {properties} from '../properties.js';
-import OrderDetails from "./OrderDetails";
-import ProductDetails from "./ProductDetails";
+import OrderDetails from "./Orders/OrderDetails";
+import ProductDetails from "./Products/ProductDetails";
 
 export function HeaderMainMenu()
 {
