@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {properties} from "../../properties";
 import Button from '@material-ui/core/Button';
 import ProductImage from "./ProductImage";
-import '../styles/productdetails.css';
+import '../../styles/productdetails.css';
 
 class ProductDetails extends Component {
 
