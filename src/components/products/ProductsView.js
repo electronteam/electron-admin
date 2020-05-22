@@ -1,29 +1,73 @@
 import React, {Component} from 'react';
 import {properties} from '../../properties.js';
-import {Redirect} from 'react-router-dom';
+import Paper from "@material-ui/core/Paper/Paper";
+import withStyles from "@material-ui/core/styles/withStyles";
+import EnhancedTableHead from "../EnhancedTableHead";
+import {Table, TableBody, TableCell, TableRow} from "@material-ui/core";
+import TableContainer from "@material-ui/core/TableContainer";
+import CustomButtonGroup from "../CustomButtonGroup";
+import TablePagination from "@material-ui/core/TablePagination";
+
+const defaultFetchOffset = 0;
+const defaultFetchLimit = 5;
+
+const useStyles = () => ({
+    visuallyHidden: {
+        border: 0,
+        clip: 'rect(0 0 0 0)',
+        height: 1,
+        margin: -1,
+        overflow: 'hidden',
+        padding: 0,
+        position: 'absolute',
+        top: 20,
+        width: 1,
+    },
+});
+
+const headCells = [
+    {id: 'Identificatorul', numeric: false, disablePadding: false, label: 'Identificatorul'},
+    {id: 'Nume produs', numeric: false, disablePadding: false, label: 'Nume produs'},
+    {id: 'Preț', numeric: false, disablePadding: false, label: 'Preț'}
+];
 
 class ProductsView extends Component {
-    constructor()
+    constructor(props)
     {
-        super();
+        super(props);
+
         this.state = {
             products: [],
             toProductDetails: false,
-            selectedProductId: ''
-        };
+            selectedProductId: '',
+            page: defaultFetchOffset,
+            rowsPerPage: defaultFetchLimit,
+            totalRows: 0
+        }
     }
 
     componentDidMount()
     {
-        let api = properties.api.products;
+        this.getProducts();
+    }
+
+    componentDidUpdate()
+    {
+        this.getProducts();
+    }
+
+    getProducts()
+    {
+        let api = properties.api.products + `?page=${this.state.page}&size=${this.state.rowsPerPage}`;
         // Read the token from the session storage // and include it to Authorization header
         const token = sessionStorage.getItem("jwt");
 
-        fetch(api, {headers: {'Authorization': token} })
+        fetch(api, {headers: {'Authorization': token}})
                 .then(response => response.json())
                 .then(response => {
                     this.setState({
-                        products: response
+                        products: response.content,
+                        totalRows: response.totalElements
                     });
                 })
                 .catch(error => {
@@ -31,51 +75,63 @@ class ProductsView extends Component {
                 });
     }
 
-    viewProductDetails(productId)
+    handleChangePage(event, newPage)
     {
-        this.setState(() => ({toProductDetails: true, selectedProductId: productId}));
-    }
+        console.log("changing from page: " + this.state.page + " to: " + newPage);
+        this.setState(() => ({page: newPage}));
+    };
+
+    handleChangeRowsPerPage(event)
+    {
+        const limit = parseInt(event.target.value, 10)
+        this.setState(() => ({rowsPerPage: limit}));
+    };
 
     render()
     {
-        if (this.state.toProductDetails === true)
-        {
-            return <Redirect to={{
-                pathname: properties.productDetails.path + this.state.selectedProductId,
-            }}/>
-        }
+        const {classes} = this.props;
 
         return (
                 <div className="container text-center">
                     {this.state.products.length > 0 ?
-                            <table className="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">{properties.productsView.id}</th>
-                                    <th scope="col" className="text-left">{properties.productsView.name}</th>
-                                    <th scope="col" className="text-left">{properties.productsView.price}</th>
-                                    <th scope="col" className="text-center">{properties.productsView.action}</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.products.map((product, index) => {
-                                    return (
-                                            <tr key={index}>
-                                                <th scope="row">{product.code}</th>
-                                                <td className="text-left">{product.name}</td>
-                                                <td className="text-left">{product.price}</td>
-                                                <td className="text-center">
-                                                    <button type="button" className="button generic_button"
-                                                            onClick={() => this.viewProductDetails(product.code)}>
-                                                        {properties.productsView.viewDetails}
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                    )
-                                })}
-                                </tbody>
-                            </table>
+                            <Paper className={classes.paper}>
+                                <TableContainer>
+                                    <Table aria-label="customized table">
+                                        <EnhancedTableHead
+                                                headCells={headCells}
+                                                classes={classes}
+                                                order={this.props.order}
+                                                orderBy={this.props.orderBy}
+                                                onRequestSort={this.props.onRequestSort}/>
+                                        <TableBody>
+                                            {this.state.products.map((product, index) => (
+                                                    <TableRow key={product.code}>
+                                                        <TableCell>{product.code}</TableCell>
+                                                        <TableCell>{product.name}</TableCell>
+                                                        <TableCell>{product.price}</TableCell>
+                                                        <TableCell>
+                                                            <CustomButtonGroup
+                                                                    row={product}
+                                                                    index={index}
+                                                                    type="product"
+                                                                    selectedID={product.code}
+                                                            />
+                                                        </TableCell>
+                                                    </TableRow>
+                                            ))}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                                <TablePagination
+                                        rowsPerPageOptions={[1, 2, 4, 5, 10]}
+                                        component="div"
+                                        count={this.state.totalRows}
+                                        rowsPerPage={this.state.rowsPerPage}
+                                        page={this.state.page}
+                                        onChangePage={(event, newPage) => this.handleChangePage(event, newPage)}
+                                        onChangeRowsPerPage={(event) => this.handleChangeRowsPerPage(event)}
+                                />
+                            </Paper>
                             :
                             <h1>{properties.productsView.noProductsDisplayText}</h1>
                     }
@@ -84,4 +140,4 @@ class ProductsView extends Component {
     }
 }
 
-export default ProductsView;
+export default withStyles(useStyles)(ProductsView);

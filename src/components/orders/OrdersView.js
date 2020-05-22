@@ -6,24 +6,25 @@ import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import TablePagination from '@material-ui/core/TablePagination';
 import CustomButtonGroup from "../CustomButtonGroup";
+import EnhancedTableHead from "../EnhancedTableHead";
 
 const defaultFetchOffset = 0;
 const defaultFetchLimit = 5;
 
 export const useStyles = makeStyles(() =>
-    createStyles({
-        visuallyHidden: {
-            border: 0,
-            clip: 'rect(0 0 0 0)',
-            height: 1,
-            margin: -1,
-            overflow: 'hidden',
-            padding: 0,
-            position: 'absolute',
-            top: 20,
-            width: 1,
-        },
-    }),
+        createStyles({
+            visuallyHidden: {
+                border: 0,
+                clip: 'rect(0 0 0 0)',
+                height: 1,
+                margin: -1,
+                overflow: 'hidden',
+                padding: 0,
+                position: 'absolute',
+                top: 20,
+                width: 1,
+            },
+        }),
 );
 
 const headCells = [
@@ -33,40 +34,6 @@ const headCells = [
     {id: 'Total Price', numeric: false, disablePadding: false, label: 'TotalPrice'},
 
 ];
-
-function EnhancedTableHead(props) {
-    const {classes, order, orderBy, onRequestSort} = props;
-    const createSortHandler = (property) => (event) => {
-        onRequestSort(event, property);
-    };
-
-    return (
-        <TableHead>
-            <TableRow>
-                {headCells.map(headCell => (
-                    <TableCell
-                        key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
-                        padding={headCell.disablePadding ? 'none' : 'default'}
-                        sortDirection={orderBy === headCell.id ? order : false}>
-                        <TableSortLabel
-                            active={orderBy === headCell.id}
-                            direction={orderBy === headCell.id ? order : 'asc'}
-                            onClick={createSortHandler(headCell.id)}>
-                            {headCell.label}
-                            {orderBy === headCell.id ? (
-                                <span className={classes.visuallyHidden}>
-                                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                                </span>
-                            ) : null}
-                        </TableSortLabel>
-                    </TableCell>
-                ))}
-                <TableCell>Actions</TableCell>
-            </TableRow>
-        </TableHead>
-    );
-}
 
 const OrdersView = (props) => {
     const classes = useStyles();
@@ -97,59 +64,60 @@ const OrdersView = (props) => {
         const token = sessionStorage.getItem("jwt");
 
         fetch(`http://localhost:8080/api/admin/orders?page=${page}&size=${rowsPerPage}`, {headers: {'Authorization': token}})
-            .then(response => response.json())
-            .then(response => {
-                console.log('THEN BLOCK ', response.content);
-                setOrders(response.content);
-                setTotalRows(response.totalElements);
-            })
-            .catch(error => {
-                console.log('ERROR: ', error);
-            });
+                .then(response => response.json())
+                .then(response => {
+                    console.log('THEN BLOCK ', response.content);
+                    setOrders(response.content);
+                    setTotalRows(response.totalElements);
+                })
+                .catch(error => {
+                    console.log('ERROR: ', error);
+                });
     }, [page, rowsPerPage]);
 
 
-
     return (
-        <Container maxWidth={"lg"}>
-            <Paper className={classes.paper}>
-                <TableContainer>
-                    <Table aria-label="customized table">
-                        <EnhancedTableHead
-                            classes={classes}
-                            order={props.order}
-                            orderBy={props.orderBy}
-                            onRequestSort={props.onRequestSort}/>
-                        <TableBody>
-                            {orders.map((row, index) => (
-                                <TableRow key={row.id}>
-                                    <TableCell>{row.id}</TableCell>
-                                    <TableCell>{row.userName}</TableCell>
-                                    <TableCell>{row.userLastName}</TableCell>
-                                    <TableCell>{row.totalPrice}</TableCell>
-                                    <TableCell>
-                                        <CustomButtonGroup
-                                            row={row}
-                                            index={index}
-                                            selectedOrderID={row.id}
-                                        />
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[1, 5, 10]}
-                    component="div"
-                    count={totalRows}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-            </Paper>
-        </Container>
+            <Container maxWidth={"lg"}>
+                <Paper className={classes.paper}>
+                    <TableContainer>
+                        <Table aria-label="customized table">
+                            <EnhancedTableHead
+                                    headCells={headCells}
+                                    classes={classes}
+                                    order={props.order}
+                                    orderBy={props.orderBy}
+                                    onRequestSort={props.onRequestSort}/>
+                            <TableBody>
+                                {orders.map((row, index) => (
+                                        <TableRow key={row.id}>
+                                            <TableCell>{row.id}</TableCell>
+                                            <TableCell>{row.userName}</TableCell>
+                                            <TableCell>{row.userLastName}</TableCell>
+                                            <TableCell>{row.totalPrice}</TableCell>
+                                            <TableCell>
+                                                <CustomButtonGroup
+                                                        row={row}
+                                                        index={index}
+                                                        type="order"
+                                                        selectedID={row.id}
+                                                />
+                                            </TableCell>
+                                        </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                            rowsPerPageOptions={[1, 5, 10]}
+                            component="div"
+                            count={totalRows}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onChangePage={handleChangePage}
+                            onChangeRowsPerPage={handleChangeRowsPerPage}
+                    />
+                </Paper>
+            </Container>
     )
 };
 

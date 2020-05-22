@@ -9,7 +9,7 @@ export default function CustomButtonGroup(props) {
         <ButtonGroup color="primary" aria-label="outlined primary button group">
 
             <Button aria-label="edit">
-                <Link to={`/order/${props.selectedOrderID}`} style={{textDecoration: 'none'}}>
+                <Link to={`/${props.type}/${props.selectedID}`} style={{textDecoration: 'none'}}>
                     <EditIcon fontSize="small"/>
                 </Link>
             </Button>
