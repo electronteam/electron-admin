@@ -3,10 +3,12 @@ import {properties} from '../../properties.js';
 import Paper from "@material-ui/core/Paper/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import EnhancedTableHead from "../EnhancedTableHead";
-import {Table, TableBody, TableCell, TableRow} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableRow, Fab} from "@material-ui/core";
 import TableContainer from "@material-ui/core/TableContainer";
 import CustomButtonGroup from "../CustomButtonGroup";
 import TablePagination from "@material-ui/core/TablePagination";
+import AddIcon from "@material-ui/icons/Add";
+import {Link} from "react-router-dom";
 
 const defaultFetchOffset = 0;
 const defaultFetchLimit = 5;
@@ -93,6 +95,13 @@ class ProductsView extends Component {
 
         return (
                 <div className="container text-center">
+                    <div className="text-right top-buttons">
+                        <Fab color="primary" aria-label="Add" size={"medium"}>
+                            <Link to={properties.createProduct.path} style={{textDecoration: 'none'}}>
+                                <AddIcon fontSize="small"/>
+                            </Link>
+                        </Fab>
+                    </div>
                     {this.state.products.length > 0 ?
                             <Paper className={classes.paper}>
                                 <TableContainer>

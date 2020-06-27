@@ -79,6 +79,14 @@ export const properties = {
         productNotFoundDisplayText: "Nu a fost gasit produsul",
         uploadProductImage: "Încarcă altă imagine"
     },
+    createProduct: {
+        path: "/createproduct",
+        title: "Completați detaliile noului produs",
+        id: "Identificatorul:",
+        name: "Numele:",
+        description: "Descrierea:",
+        price: "Preț:"
+    },
     login: {
         emailPlaceHolder: "Email",
         passwordPlaceHolder: "Parolă",
@@ -92,7 +100,8 @@ export const properties = {
         productByCode: "http://localhost:8080/api/product",
         getProductImage: "http://localhost:8080/api/productImage",
         uploadProductImage: "http://localhost:8080/api/upload/productImage/",
-        login: "http://localhost:8080/login"
+        login: "http://localhost:8080/login",
+        createProduct: "http://localhost:8080/api/admin/createProduct"
     },
     url: {
         imageServerURL: "http://localhost:8080/"
@@ -100,5 +109,6 @@ export const properties = {
     buttons: {
         login: "Autentificare",
         logout: "Deconectare",
+        save: "Salvează"
     }
 };

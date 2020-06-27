@@ -276,3 +276,72 @@ img
 {
     font-size: 14px;
 }
+
+.top-buttons
+{
+    margin: 8px;
+}
+
+.top-buttons a
+{
+    color: white;
+}
+
+.create_form
+{
+    background: #FFFFFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.create_form_container
+{
+    width: 50%;
+
+    /*Combination below centers div inside another div*/
+    position: relative;
+    margin: 0 auto;
+}
+
+.create_form_fields
+{
+    width: 70%;
+    padding-top: 51px;
+    padding-bottom: 32px;
+    margin-bottom: 15px;
+    background: #f8f8f8;
+}
+
+.create_form_input
+{
+    height: 45px;
+    background: #FFFFFF;
+    border: solid 1px #AFAFAF;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    padding-left: 20px;
+    -webkit-border-radius: 5px;
+}
+
+.create_form_price_input
+{
+    height: 45px;
+    background: #FFFFFF;
+    border: solid 1px #AFAFAF;
+    outline: none;
+    box-sizing: border-box;
+    color: #000000;
+    padding-left: 10px;
+    -webkit-border-radius: 5px;
+    width: 17em;
+}
+
+.create_form_title
+{
+    font-weight: 500;
+    color: #4a4a4a;
+    font-size: 22px;
+    line-height: 0.75;
+    margin-bottom: 40px;
+}
