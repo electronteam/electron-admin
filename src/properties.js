@@ -101,7 +101,8 @@ export const properties = {
         getProductImage: "http://localhost:8080/api/productImage",
         uploadProductImage: "http://localhost:8080/api/upload/productImage/",
         login: "http://localhost:8080/login",
-        createProduct: "http://localhost:8080/api/admin/createProduct"
+        createProduct: "http://localhost:8080/api/admin/createProduct",
+        updateProduct: "http://localhost:8080/api/admin/updateProduct"
     },
     url: {
         imageServerURL: "http://localhost:8080/"

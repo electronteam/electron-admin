@@ -345,3 +345,16 @@ img
     line-height: 0.75;
     margin-bottom: 40px;
 }
+
+.edit_form_fields
+{
+    padding-top: 51px;
+    padding-bottom: 32px;
+    background: #f8f8f8;
+}
+
+.edit_form_container
+{
+    width: 750px;
+    margin-left: 100px;
+}

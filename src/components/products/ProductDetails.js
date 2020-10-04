@@ -14,8 +14,42 @@ class ProductDetails extends Component {
             productId: '',
             product: null,
             imageURL: null,
+            code: '',
+            name: '',
+            description: '',
+            price: 0.00
         };
         this.reloadImage = this.reloadImage.bind(this);
+    }
+
+    inputsChangeHandler = (event) => {
+        let nam = event.target.name;
+        let val = event.target.value;
+        this.setState({[nam]: val});
+    }
+
+    updateProduct(callback)
+    {
+        let api = properties.api.updateProduct;
+        const token = sessionStorage.getItem("jwt");
+
+        let formData = new FormData();
+        let code = this.state.code;
+        let name = this.state.name;
+        let description = this.state.description;
+        let price = this.state.price;
+        formData.append('code', code);
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('price', price);
+
+        fetch(api, {
+            method: 'post',
+            headers: {'Authorization': token},
+            body: formData
+        }).then(function (response) {
+            callback(code);
+        })
     }
 
     componentDidMount()
@@ -37,6 +71,10 @@ class ProductDetails extends Component {
                     // order = response
                     this.setState({
                         product: response,
+                        code: response.code,
+                        name: response.name,
+                        description: response.description,
+                        price: response.price,
                         imageURL: response.imageURL,
                         time: new Date().getTime()
                     });
@@ -93,7 +131,6 @@ class ProductDetails extends Component {
                             <div className="single_product">
                                 <div className="container">
                                     <div className="row">
-                                        <div className="col-lg-1"/>
                                         <div className="col-lg-5">
                                             <div id="productImage" className="image_selected">
                                                 {this.state.imageURL ? <ProductImage imageURL={this.state.imageURL}/> : null}
@@ -113,14 +150,68 @@ class ProductDetails extends Component {
                                                 </Button>
                                             </label>
                                         </div>
-                                        <div className="col-lg-5">
+                                        <div className="col-lg-7">
                                             <div className="product_description">
-                                                <div className="product_name">{this.state.product.name}</div>
-                                                <div className="product_text"><p>{this.state.product.description}</p></div>
-                                                <div className="product_price">{this.state.product.price} lei</div>
+                                                <div className="edit_form_fields">
+                                                    <div className="edit_form_container">
+                                                        <div className="form-group row">
+                                                            <label htmlFor="name" className="col-sm-2 col-form-label">{properties.createProduct.id}</label>
+                                                            <div className="col-sm-10">
+                                                                <input type="text" className="create_form_input" size="30"
+                                                                       id="code"
+                                                                       name="code"
+                                                                       readOnly={true}
+                                                                       value={this.state.product.code}
+                                                                       onChange={this.inputsChangeHandler}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label htmlFor="lastName"
+                                                                   className="col-sm-2 col-form-label">{properties.createProduct.name}</label>
+                                                            <div className="col-sm-10">
+                                                                <input type="text" className="create_form_input" size="30"
+                                                                       id="name"
+                                                                       name="name"
+                                                                       required="required"
+                                                                       defaultValue={this.state.product.name}
+                                                                       onChange={this.inputsChangeHandler}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label htmlFor="email"
+                                                                   className="col-sm-2 col-form-label">{properties.createProduct.description}</label>
+                                                            <div className="col-sm-10">
+                                                                <input type="text" className="create_form_input" size="30"
+                                                                       id="description"
+                                                                       name="description"
+                                                                       required="required"
+                                                                       defaultValue={this.state.product.description}
+                                                                       onChange={this.inputsChangeHandler}/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label htmlFor="address"
+                                                                   className="col-sm-2 col-form-label">{properties.createProduct.price}</label>
+                                                            <div className="col-sm-10">
+                                                                <input type="number" step="0.01" min="0" className="create_form_price_input"
+                                                                       id="price"
+                                                                       name="price"
+                                                                       required="required"
+                                                                       defaultValue={this.state.product.price}
+                                                                       onChange={this.inputsChangeHandler}/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="button_container">
+                                                <button type="button" className="button generic_button"
+                                                        onClick={() => this.updateProduct(this.getProductDetails)}>
+                                                    {properties.buttons.save}
+                                                </button>
                                             </div>
                                         </div>
-                                        <div className="col-lg-1"/>
                                     </div>
                                 </div>
                             </div>
