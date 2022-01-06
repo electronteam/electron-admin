@@ -1,72 +1,64 @@
-import React, {Component} from 'react';
+import React, {Suspense, useEffect, useState} from 'react';
 import './styles/App.css';
-
-import TopBar from "./components/TopBar";
+import i18n from './i18n';
+import {TopBar} from "./components/TopBar";
 import {Footer} from "./components/Footer";
 import Login from "./components/Login";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {HeaderMainMenu} from "./components/HeaderMainMenu";
+import LocaleContext from './LocaleContext';
+import Loading from "./components/Loading";
 
-class App extends Component {
-    constructor(props)
-    {
-        super(props);
+function App()
+{
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [locale, setLocale] = useState(i18n.language);
 
-        // Bind the this context to the handler function
-        this.authenticate = this.authenticate.bind(this);
-        this.logout = this.logout.bind(this);
+    i18n.on('languageChanged', (lng) => setLocale(i18n.language));
 
-        this.state = {
-            isAuthenticated: false
-        };
-    }
+    useEffect(() => {
+        const authenticated = sessionStorage.getItem("isAuthenticated");
+        setIsAuthenticated(authenticated === 'yes')
+    }, [])
 
-    authenticate(token)
-    {
+    const authenticate = (token) => {
         sessionStorage.setItem("jwt", token);
         sessionStorage.setItem("isAuthenticated", "yes");
-        this.setState({isAuthenticated: true});
+        setIsAuthenticated(true)
     }
 
-    logout() {
+    const logout = () => {
         sessionStorage.removeItem("isAuthenticated");
         sessionStorage.removeItem("jwt");
-        this.setState({isAuthenticated: false});
+        setIsAuthenticated(false)
     }
 
-    componentDidMount()
+    if (isAuthenticated === true)
     {
-        const authenticated  = sessionStorage.getItem("isAuthenticated");
-        if (authenticated === "yes")
-        {
-            this.setState({isAuthenticated: true});
-        }
+        return (
+                <LocaleContext.Provider value={{locale, setLocale}}>
+                    <Suspense fallback={<Loading/>}>
+                        <MuiThemeProvider>
+                            <div>
+                                <TopBar action={logout} isAuth={isAuthenticated}/>
+                                <HeaderMainMenu/>
+                                <Footer/>
+                            </div>
+                        </MuiThemeProvider>
+                    </Suspense>
+                </LocaleContext.Provider>
+        );
     }
-
-    render()
-    {
-        if (this.state.isAuthenticated === true)
-        {
-            return (
-                    <MuiThemeProvider>
-                        <div>
-                            <TopBar action={this.logout} isAuth={this.state.isAuthenticated}/>
-                            <HeaderMainMenu/>
-                            <Footer/>
-                        </div>
-                    </MuiThemeProvider>
-            );
-        }
-        else
-        {
-            return (
+    return (
+            <LocaleContext.Provider value={{locale, setLocale}}>
+                <Suspense fallback={<Loading/>}>
                     <div>
-                        <TopBar isAuth={this.state.isAuthenticated}/>
-                        <Login action = {this.authenticate}/>
+                        <TopBar isAuth={isAuthenticated}/>
+                        <Login action={authenticate}/>
                     </div>
-            );
-        }
-    }
+                </Suspense>
+            </LocaleContext.Provider>
+    );
 }
 
 export default App;

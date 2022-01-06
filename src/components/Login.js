@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-
 import '../styles/login.css';
 import {properties} from '../properties.js';
+import { withTranslation } from 'react-i18next';
 
 class Login extends Component {
     constructor(props)
@@ -47,7 +47,7 @@ class Login extends Component {
         return (
                 <div className="container text-center">
                     <div className="row justify-content-center">
-                        {this.state.hasLoginFailed && <div className="alert alert-danger invalid_credentials">{properties.login.invalidCredentialsText}</div>}
+                        {this.state.hasLoginFailed && <div className="alert alert-danger invalid_credentials">{this.props.t('login.invalidCredentialsText')}</div>}
                     </div>
                     <div className="row justify-content-center">
                         <div className="login">
@@ -57,7 +57,7 @@ class Login extends Component {
                                        name="email"
                                        required="required"
                                        onChange={this.handleChange}
-                                       placeholder={properties.login.emailPlaceHolder}/>
+                                       placeholder={this.props.t('login.emailPlaceHolder')}/>
                             </div>
                             <div className="login_input">
                                 <input type="password" className="generic_input" size="30"
@@ -65,11 +65,11 @@ class Login extends Component {
                                        name="password"
                                        required="required"
                                        onChange={this.handleChange}
-                                       placeholder={properties.login.passwordPlaceHolder}/>
+                                       placeholder={this.props.t('login.passwordPlaceHolder')}/>
                             </div>
                             <div className="button_container">
                                 <button type="button" className="button generic_button" onClick={this.login}>
-                                    {properties.buttons.login}
+                                    {this.props.t('buttons.login')}
                                 </button>
                             </div>
                         </div>
@@ -79,4 +79,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withTranslation()(Login);

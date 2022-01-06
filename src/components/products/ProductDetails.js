@@ -3,6 +3,7 @@ import {properties} from "../../properties";
 import Button from '@material-ui/core/Button';
 import ProductImage from "./ProductImage";
 import '../../styles/productdetails.css';
+import { withTranslation } from 'react-i18next';
 
 class ProductDetails extends Component {
 
@@ -146,7 +147,7 @@ class ProductDetails extends Component {
                                                 />
 
                                                 <Button color={"primary"} variant="contained" component="span">
-                                                    {properties.productDetails.uploadProductImage}
+                                                    {this.props.t('productDetails.uploadProductImage')}
                                                 </Button>
                                             </label>
                                         </div>
@@ -155,7 +156,7 @@ class ProductDetails extends Component {
                                                 <div className="edit_form_fields">
                                                     <div className="edit_form_container">
                                                         <div className="form-group row">
-                                                            <label htmlFor="name" className="col-sm-2 col-form-label">{properties.createProduct.id}</label>
+                                                            <label htmlFor="name" className="col-sm-2 col-form-label">{this.props.t('createProduct.id')}</label>
                                                             <div className="col-sm-10">
                                                                 <input type="text" className="create_form_input" size="30"
                                                                        id="code"
@@ -167,7 +168,7 @@ class ProductDetails extends Component {
                                                         </div>
                                                         <div className="form-group row">
                                                             <label htmlFor="lastName"
-                                                                   className="col-sm-2 col-form-label">{properties.createProduct.name}</label>
+                                                                   className="col-sm-2 col-form-label">{this.props.t('createProduct.name')}</label>
                                                             <div className="col-sm-10">
                                                                 <input type="text" className="create_form_input" size="30"
                                                                        id="name"
@@ -179,7 +180,7 @@ class ProductDetails extends Component {
                                                         </div>
                                                         <div className="form-group row">
                                                             <label htmlFor="email"
-                                                                   className="col-sm-2 col-form-label">{properties.createProduct.description}</label>
+                                                                   className="col-sm-2 col-form-label">{this.props.t('createProduct.description')}</label>
                                                             <div className="col-sm-10">
                                                                 <input type="text" className="create_form_input" size="30"
                                                                        id="description"
@@ -191,7 +192,7 @@ class ProductDetails extends Component {
                                                         </div>
                                                         <div className="form-group row">
                                                             <label htmlFor="address"
-                                                                   className="col-sm-2 col-form-label">{properties.createProduct.price}</label>
+                                                                   className="col-sm-2 col-form-label">{this.props.t('createProduct.price')}</label>
                                                             <div className="col-sm-10">
                                                                 <input type="number" step="0.01" min="0" className="create_form_price_input"
                                                                        id="price"
@@ -208,7 +209,7 @@ class ProductDetails extends Component {
                                             <div className="button_container">
                                                 <button type="button" className="button generic_button"
                                                         onClick={() => this.updateProduct(this.getProductDetails)}>
-                                                    {properties.buttons.save}
+                                                    {this.props.t('buttons.save')}
                                                 </button>
                                             </div>
                                         </div>
@@ -216,11 +217,11 @@ class ProductDetails extends Component {
                                 </div>
                             </div>
                             :
-                            <h2>{properties.productDetails.productNotFoundDisplayText}</h2>
+                            <h2>{this.props.t('productDetails.productNotFoundDisplayText')}</h2>
                     }
                 </div>
         )
     }
 }
 
-export default ProductDetails;
+export default withTranslation()(ProductDetails);

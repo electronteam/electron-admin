@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {properties} from '../properties.js';
+import { withTranslation } from 'react-i18next';
 
 class UsersView extends Component {
     constructor()
@@ -36,11 +37,11 @@ class UsersView extends Component {
                             <table className="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col" className="text-left">{properties.usersView.name}</th>
-                                    <th scope="col" className="text-left">{properties.usersView.lastName}</th>
-                                    <th scope="col" className="text-left">{properties.usersView.email}</th>
-                                    <th scope="col" className="text-left">{properties.usersView.phone}</th>
-                                    <th scope="col" className="text-left">{properties.usersView.role}</th>
+                                    <th scope="col" className="text-left">{this.props.t('usersView.name')}</th>
+                                    <th scope="col" className="text-left">{this.props.t('usersView.lastName')}</th>
+                                    <th scope="col" className="text-left">{this.props.t('usersView.email')}</th>
+                                    <th scope="col" className="text-left">{this.props.t('usersView.phone')}</th>
+                                    <th scope="col" className="text-left">{this.props.t('usersView.role')}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,11 +59,11 @@ class UsersView extends Component {
                                 </tbody>
                             </table>
                             :
-                            <h1>{properties.usersView.noUserDisplayText}</h1>
+                            <h1>{this.props.t('usersView.noUserDisplayText')}</h1>
                     }
                 </div>
         );
     }
 }
 
-export default UsersView;
+export default withTranslation()(UsersView);

@@ -1,12 +1,13 @@
 import {TableCell, TableHead, TableRow, TableSortLabel} from "@material-ui/core";
 import React from "react";
-import {properties} from "../properties";
+import {useTranslation} from "react-i18next";
 
 export default function EnhancedTableHead(props) {
     const {headCells, classes, order, orderBy, onRequestSort} = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
+    const {t} = useTranslation();
 
     return (
             <TableHead>
@@ -21,7 +22,7 @@ export default function EnhancedTableHead(props) {
                                         active={orderBy === headCell.id}
                                         direction={orderBy === headCell.id ? order : 'asc'}
                                         onClick={createSortHandler(headCell.id)}>
-                                    {headCell.label}
+                                    {t(headCell.label)}
                                     {orderBy === headCell.id ? (
                                             <span className={classes.visuallyHidden}>
                                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
@@ -30,7 +31,7 @@ export default function EnhancedTableHead(props) {
                                 </TableSortLabel>
                             </TableCell>
                     ))}
-                    <TableCell>{properties.productsView.action}</TableCell>
+                    <TableCell>{t('action')}</TableCell>
                 </TableRow>
             </TableHead>
     );

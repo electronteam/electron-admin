@@ -9,6 +9,7 @@ import CustomButtonGroup from "../CustomButtonGroup";
 import TablePagination from "@material-ui/core/TablePagination";
 import AddIcon from "@material-ui/icons/Add";
 import {Link} from "react-router-dom";
+import { withTranslation } from 'react-i18next';
 
 const defaultFetchOffset = 0;
 const defaultFetchLimit = 5;
@@ -28,9 +29,9 @@ const useStyles = () => ({
 });
 
 const headCells = [
-    {id: 'Identificatorul', numeric: false, disablePadding: false, label: 'Identificatorul'},
-    {id: 'Nume produs', numeric: false, disablePadding: false, label: 'Nume produs'},
-    {id: 'Preț', numeric: false, disablePadding: false, label: 'Preț'}
+    {id: 'ID', numeric: false, disablePadding: false, label: 'productsView.id'},
+    {id: 'Name', numeric: false, disablePadding: false, label: 'productsView.name'},
+    {id: 'Price', numeric: false, disablePadding: false, label: 'productsView.price'}
 ];
 
 class ProductsView extends Component {
@@ -142,11 +143,11 @@ class ProductsView extends Component {
                                 />
                             </Paper>
                             :
-                            <h1>{properties.productsView.noProductsDisplayText}</h1>
+                            <h1>{this.props.t('productsView.noProductsDisplayText')}</h1>
                     }
                 </div>
         );
     }
 }
 
-export default withStyles(useStyles)(ProductsView);
+export default withTranslation()(withStyles(useStyles)(ProductsView));

@@ -1,0 +1,74 @@
+{
+  "language": "Română",
+  "action": "Acțiune",
+  "login": {
+    "emailPlaceHolder": "Email",
+    "passwordPlaceHolder": "Parolă",
+    "invalidCredentialsText": "Datele de autentificare sunt invalide"
+  },
+  "header": {
+    "orders": {
+      "display": "Comenzile"
+    },
+    "products": {
+      "display": "Produse"
+    },
+    "users": {
+      "display": "Utilizatori"
+    }
+  },
+  "buttons": {
+    "login": "Autentificare",
+    "logout": "Deconectare",
+    "save": "Salvează"
+  },
+  "ordersView": {
+    "id": "ID",
+    "firstName": "Prenume",
+    "lastName": "Nume",
+    "totalPrice": "Prețul total"
+  },
+  "orderDetails": {
+    "id": "ID:",
+    "customerName": "Prenume:",
+    "customerLastName": "Nume:",
+    "customerEmail": "Email:",
+    "customerPhone": "Telefon:",
+    "productName": "Nume produs",
+    "productPrice": "Preț",
+    "productQuantity": "Cantitate",
+    "entryTotalPrice": "Total",
+    "orderTotalPrice": "Total comandă:",
+    "addressDetailsTitle": "Detaliile adresei de livrare",
+    "city": "Localitate:",
+    "street": "Strada:",
+    "clientDetailsTitle": "Detaliile clientului",
+    "orderNotFoundDisplayText": "Nu a fost gasita comanda"
+  },
+  "productsView": {
+    "noProductsDisplayText": "Nu a fost găsit nici un produs",
+    "id": "ID",
+    "name": "Nume",
+    "price": "Preț"
+  },
+  "productDetails": {
+    "productNotFoundDisplayText": "Nu a fost gasit produsul",
+    "uploadProductImage": "Încarcă altă imagine"
+  },
+  "createProduct": {
+    "title": "Completați detaliile noului produs",
+    "id": "ID:",
+    "name": "Numele:",
+    "description": "Descrierea:",
+    "price": "Preț:"
+  },
+  "usersView": {
+    "noUserDisplayText": "Nu a fost găsit nici un utilizator",
+    "name": "Prenume",
+    "lastName": "Nume",
+    "email": "Email",
+    "address": "Adresa",
+    "phone": "Telefon",
+    "role": "Rolurile"
+  }
+}

@@ -4,9 +4,12 @@ import {properties} from '../properties.js';
 import OrderDetails from "./orders/OrderDetails";
 import ProductDetails from "./products/ProductDetails";
 import CreateProduct from "./products/CreateProduct";
+import {useTranslation} from "react-i18next";
 
 export function HeaderMainMenu()
 {
+    const {t} = useTranslation();
+
     return (
             <BrowserRouter>
 
@@ -31,7 +34,7 @@ export function HeaderMainMenu()
                                 return (
                                         <li key={index}>
                                             <Link to={link.path} className="link">
-                                                {link.displayText}
+                                                {t('header.' + link.id + '.display')}
                                             </Link>
                                         </li>
                                 )

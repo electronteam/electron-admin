@@ -1,0 +1,74 @@
+{
+  "language": "English",
+  "action": "Action",
+  "login": {
+    "emailPlaceHolder": "Email",
+    "passwordPlaceHolder": "Password",
+    "invalidCredentialsText": "Authentication data is invalid"
+  },
+  "header": {
+    "orders": {
+      "display": "Orders"
+    },
+    "products": {
+      "display": "Products"
+    },
+    "users": {
+      "display": "Users"
+    }
+  },
+  "buttons": {
+    "login": "Login",
+    "logout": "Logout",
+    "save": "Save"
+  },
+  "ordersView": {
+    "id": "ID",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "totalPrice": "Total Price"
+  },
+  "orderDetails": {
+    "id": "ID:",
+    "customerName": "Name:",
+    "customerLastName": "Last name:",
+    "customerEmail": "Email:",
+    "customerPhone": "Phone:",
+    "productName": "Product name",
+    "productPrice": "Price",
+    "productQuantity": "Quantity",
+    "entryTotalPrice": "Total",
+    "orderTotalPrice": "Order Total:",
+    "addressDetailsTitle": "Delivery address",
+    "city": "City:",
+    "street": "Street:",
+    "clientDetailsTitle": "Customer Details",
+    "orderNotFoundDisplayText": "Order not found"
+  },
+  "productsView": {
+    "noProductsDisplayText": "No products found",
+    "id": "ID",
+    "name": "Name",
+    "price": "Price"
+  },
+  "productDetails": {
+    "productNotFoundDisplayText": "Product not found",
+    "uploadProductImage": "Upload another image"
+  },
+  "createProduct": {
+    "title": "Fill in the details of the new product",
+    "id": "ID:",
+    "name": "Name:",
+    "description": "Description:",
+    "price": "Price:"
+  },
+  "usersView": {
+    "noUserDisplayText": "No users found",
+    "name": "Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "address": "Address",
+    "phone": "Phone",
+    "role": "Roles"
+  }
+}

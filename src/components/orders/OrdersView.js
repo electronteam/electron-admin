@@ -28,10 +28,10 @@ export const useStyles = makeStyles(() =>
 );
 
 const headCells = [
-    {id: 'ID', numeric: false, disablePadding: false, label: 'ID'},
-    {id: 'First Name', numeric: false, disablePadding: false, label: 'First Name'},
-    {id: 'Last Name', numeric: false, disablePadding: false, label: 'Last Name'},
-    {id: 'Total Price', numeric: false, disablePadding: false, label: 'TotalPrice'},
+    {id: 'ID', numeric: false, disablePadding: false, label: 'ordersView.id'},
+    {id: 'First Name', numeric: false, disablePadding: false, label: 'ordersView.firstName'},
+    {id: 'Last Name', numeric: false, disablePadding: false, label: 'ordersView.lastName'},
+    {id: 'Total Price', numeric: false, disablePadding: false, label: 'ordersView.totalPrice'},
 
 ];
 

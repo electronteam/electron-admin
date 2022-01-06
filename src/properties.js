@@ -11,86 +11,32 @@ export const properties = {
     header: {
         links: [
             {
-                displayText: "Comenzile",
+                id: "orders",
                 path: "/",
                 component: OrdersView
             },
             {
-                displayText: "Produse",
+                id: "products",
                 path: "/produse",
                 component: ProductsView
             },
             {
-                displayText: "Utilizatori",
+                id: "users",
                 path: "/contacte",
                 component: UsersView
             }
         ]
     },
-    ordersView: {
-        noOrdersDisplayText: "Nu a fost plasată nici o comandă",
-        id: "Identificatorul",
-        customerName: "Prenume client",
-        customerLastName: "Nume client",
-        totalPrice: "Total comandă",
-        createdDate: "Data creării",
-        viewDetails: "Vezi Detaliile",
-        action: "Acțiune"
-    },
-    usersView: {
-        noUserDisplayText: "Nu a fost gasit nici un utilizator",
-        name: "Prenume utilizator",
-        lastName: "Nume utilizator",
-        email: "Email utilizator",
-        address: "Addressa utilizator",
-        phone: "Telefon utilizator",
-        role: "Rolurile utilizatorului"
-    },
     orderDetails: {
         path: "/order/",
-        paramName: "orderId",
-        id: "Identificatorul:",
-        customerName: "Prenume:",
-        customerLastName: "Nume:",
-        customerEmail: "Email:",
-        customerPhone: "Telefon:",
-        productName: "Nume produs",
-        productPrice: "Preț",
-        productQuantity: "Cantitate",
-        entryTotalPrice: "Total",
-        orderTotalPrice: "Total comandă:",
-        addressDetailsTitle: "Detaliile adresei de livrare",
-        city: "Localitate:",
-        street: "Strada:",
-        clientDetailsTitle: "Detaliile clientului",
-        orderNotFoundDisplayText: "Nu a fost gasita comanda"
-    },
-    productsView: {
-        noProductsDisplayText: "Nu a fost adaugat nici un produs",
-        id: "Identificatorul",
-        name: "Nume produs",
-        price: "Preț",
-        viewDetails: "Vezi Detaliile",
-        action: "Acțiune"
+        paramName: "orderId"
     },
     productDetails: {
         path: "/product/",
-        paramName: "productId",
-        productNotFoundDisplayText: "Nu a fost gasit produsul",
-        uploadProductImage: "Încarcă altă imagine"
+        paramName: "productId"
     },
     createProduct: {
         path: "/createproduct",
-        title: "Completați detaliile noului produs",
-        id: "Identificatorul:",
-        name: "Numele:",
-        description: "Descrierea:",
-        price: "Preț:"
-    },
-    login: {
-        emailPlaceHolder: "Email",
-        passwordPlaceHolder: "Parolă",
-        invalidCredentialsText: "Datele de autentificare sunt invalide"
     },
     api: {
         allOrders: "http://localhost:8080/api/admin/orders",
@@ -106,10 +52,5 @@ export const properties = {
     },
     url: {
         imageServerURL: "http://localhost:8080/"
-    },
-    buttons: {
-        login: "Autentificare",
-        logout: "Deconectare",
-        save: "Salvează"
     }
 };

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../../styles/orderdetails.css';
 import {properties} from '../../properties.js';
+import { withTranslation } from 'react-i18next';
 
 class OrderDetails extends Component {
 
@@ -49,7 +50,7 @@ class OrderDetails extends Component {
                                         <div className="order-details">
                                             <div className="order_details_container">
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.id}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.id')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="orderId"
@@ -59,10 +60,10 @@ class OrderDetails extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="form-group row justify-content-center delivery_address_title">
-                                                    <strong>{properties.orderDetails.addressDetailsTitle}</strong>
+                                                    <strong>{this.props.t('orderDetails.addressDetailsTitle')}</strong>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.city}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.city')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="city"
@@ -72,7 +73,7 @@ class OrderDetails extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.street}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.street')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="street"
@@ -88,10 +89,10 @@ class OrderDetails extends Component {
                                         <div className="order-details">
                                             <div className="order_details_container">
                                                 <div className="form-group row justify-content-center">
-                                                    <strong>{properties.orderDetails.clientDetailsTitle}</strong>
+                                                    <strong>{this.props.t('orderDetails.clientDetailsTitle')}</strong>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.customerName}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.customerName')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="name"
@@ -101,7 +102,7 @@ class OrderDetails extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.customerLastName}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.customerLastName')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="lastName"
@@ -111,7 +112,7 @@ class OrderDetails extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.customerEmail}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.customerEmail')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="email"
@@ -121,7 +122,7 @@ class OrderDetails extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
-                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{properties.orderDetails.customerPhone}</label>
+                                                    <label htmlFor="name" className="col-sm-3 col-form-label">{this.props.t('orderDetails.customerPhone')}</label>
                                                     <div className="col-sm-9">
                                                         <input type="text" className="order_details_input" size="30"
                                                                id="phone"
@@ -142,19 +143,19 @@ class OrderDetails extends Component {
                                                         <li className="clearfix">
                                                             <div className="order_item_info d-flex flex-md-row flex-column justify-content-between">
                                                                 <div className="order_item_name order_info_col">
-                                                                    <div className="order_item_title">{properties.orderDetails.productName}</div>
+                                                                    <div className="order_item_title">{this.props.t('orderDetails.productName')}</div>
                                                                     <div className="order_item_text">{entry.product.name}</div>
                                                                 </div>
                                                                 <div className="order_item_price order_info_col">
-                                                                    <div className="order_item_title">{properties.orderDetails.productPrice}</div>
+                                                                    <div className="order_item_title">{this.props.t('orderDetails.productPrice')}</div>
                                                                     <div className="order_item_text">{entry.product.price} lei</div>
                                                                 </div>
                                                                 <div className="order_info_col">
-                                                                    <div className="order_item_title">{properties.orderDetails.productQuantity}</div>
+                                                                    <div className="order_item_title">{this.props.t('orderDetails.productQuantity')}</div>
                                                                     <div className="order_item_text">{entry.quantity}</div>
                                                                 </div>
                                                                 <div className="order_info_col">
-                                                                    <div className="order_item_title">{properties.orderDetails.entryTotalPrice}</div>
+                                                                    <div className="order_item_title">{this.props.t('orderDetails.entryTotalPrice')}</div>
                                                                     <div className="order_item_text">{entry.totalPrice} lei</div>
                                                                 </div>
                                                             </div>
@@ -168,7 +169,7 @@ class OrderDetails extends Component {
                                         <div className="row justify-content-center">
                                             <div className="order_total">
                                                 <div className="order_total_content text-md-right">
-                                                    <div className="order_total_title">{properties.orderDetails.orderTotalPrice}</div>
+                                                    <div className="order_total_title">{this.props.t('orderDetails.orderTotalPrice')}</div>
                                                     <div className="order_total_amount">{this.state.order.totalPrice} lei</div>
                                                 </div>
                                             </div>
@@ -176,11 +177,11 @@ class OrderDetails extends Component {
                                         : null}
                             </div>
                             :
-                            <h1>{properties.orderDetails.orderNotFoundDisplayText}</h1>
+                            <h1>{this.props.t('orderDetails.orderNotFoundDisplayText')}</h1>
                     }
                 </div>
         );
     }
 }
 
-export default OrderDetails;
+export default withTranslation()(OrderDetails);
