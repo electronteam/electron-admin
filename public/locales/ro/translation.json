@@ -52,7 +52,7 @@
     "price": "Preț"
   },
   "productDetails": {
-    "productNotFoundDisplayText": "Nu a fost gasit produsul",
+    "productNotFoundDisplayText": "Nu a fost găsit produsul",
     "uploadProductImage": "Încarcă altă imagine"
   },
   "createProduct": {
@@ -71,5 +71,16 @@
     "address": "Adresa",
     "phone": "Telefon",
     "role": "Rol"
+  },
+  "userDetails": {
+    "id": "ID:",
+    "name": "Prenume:",
+    "lastName": "Nume:",
+    "email": "Email:",
+    "phone": "Telefon:",
+    "addressDetailsTitle": "Adresa",
+    "city": "Localitate:",
+    "street": "Strada:",
+    "userNotFoundDisplayText": "Nu a fost găsit utilizatorul"
   }
 }

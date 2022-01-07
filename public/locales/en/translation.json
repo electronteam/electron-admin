@@ -71,5 +71,16 @@
     "address": "Address",
     "phone": "Phone",
     "role": "Role"
+  },
+  "userDetails": {
+    "id": "ID:",
+    "name": "Name:",
+    "lastName": "Last name:",
+    "email": "Email:",
+    "phone": "Phone:",
+    "addressDetailsTitle": "Address",
+    "city": "City:",
+    "street": "Street:",
+    "userNotFoundDisplayText": "User not found"
   }
 }

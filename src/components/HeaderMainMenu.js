@@ -3,6 +3,7 @@ import {BrowserRouter, Link, Route} from 'react-router-dom';
 import {properties} from '../properties.js';
 import OrderDetails from "./orders/OrderDetails";
 import ProductDetails from "./products/ProductDetails";
+import UserDetails from "./users/UserDetails";
 import CreateProduct from "./products/CreateProduct";
 import {useTranslation} from "react-i18next";
 
@@ -50,6 +51,7 @@ export function HeaderMainMenu()
                 <Route path={properties.orderDetails.path + ":" + properties.orderDetails.paramName} component={OrderDetails}/>
                 <Route path={properties.productDetails.path + ":" + properties.productDetails.paramName} component={ProductDetails}/>
                 <Route path={properties.createProduct.path} component={CreateProduct}/>
+                <Route path={properties.userDetails.path + ":" + properties.userDetails.paramName} component={UserDetails}/>
             </BrowserRouter>
     );
 }

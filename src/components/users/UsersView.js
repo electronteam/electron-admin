@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {properties} from '../properties.js';
+import {properties} from '../../properties.js';
 import {withTranslation} from 'react-i18next';
 import Paper from "@material-ui/core/Paper/Paper";
 import TableContainer from "@material-ui/core/TableContainer";
 import {Table, TableBody, TableCell, TableRow} from "@material-ui/core";
-import EnhancedTableHead from "./EnhancedTableHead";
-import CustomButtonGroup from "./CustomButtonGroup";
+import EnhancedTableHead from "./../EnhancedTableHead";
+import CustomButtonGroup from "./../CustomButtonGroup";
 import TablePagination from "@material-ui/core/TablePagination";
 import withStyles from "@material-ui/core/styles/withStyles";
 
