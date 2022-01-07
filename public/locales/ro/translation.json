@@ -64,11 +64,12 @@
   },
   "usersView": {
     "noUserDisplayText": "Nu a fost găsit nici un utilizator",
+    "id": "ID",
     "name": "Prenume",
     "lastName": "Nume",
     "email": "Email",
     "address": "Adresa",
     "phone": "Telefon",
-    "role": "Rolurile"
+    "role": "Rol"
   }
 }

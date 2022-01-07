@@ -31,8 +31,7 @@ const headCells = [
     {id: 'ID', numeric: false, disablePadding: false, label: 'ordersView.id'},
     {id: 'First Name', numeric: false, disablePadding: false, label: 'ordersView.firstName'},
     {id: 'Last Name', numeric: false, disablePadding: false, label: 'ordersView.lastName'},
-    {id: 'Total Price', numeric: false, disablePadding: false, label: 'ordersView.totalPrice'},
-
+    {id: 'Total Price', numeric: false, disablePadding: false, label: 'ordersView.totalPrice'}
 ];
 
 const OrdersView = (props) => {

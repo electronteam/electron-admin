@@ -64,11 +64,12 @@
   },
   "usersView": {
     "noUserDisplayText": "No users found",
+    "id": "ID",
     "name": "Name",
     "lastName": "Last Name",
     "email": "Email",
     "address": "Address",
     "phone": "Phone",
-    "role": "Roles"
+    "role": "Role"
   }
 }

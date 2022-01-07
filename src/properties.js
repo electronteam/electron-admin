@@ -40,7 +40,7 @@ export const properties = {
     },
     api: {
         allOrders: "http://localhost:8080/api/admin/orders",
-        allUsers: "http://localhost:8080/api/admin/users",
+        users: "http://localhost:8080/api/admin/users",
         products: "http://localhost:8080/api/admin/products",
         orderByCode: "http://localhost:8080/api/admin/order",
         productByCode: "http://localhost:8080/api/product",

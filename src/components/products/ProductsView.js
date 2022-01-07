@@ -80,7 +80,6 @@ class ProductsView extends Component {
 
     handleChangePage(event, newPage)
     {
-        console.log("changing from page: " + this.state.page + " to: " + newPage);
         this.setState(() => ({page: newPage}));
     };
 
