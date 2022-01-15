@@ -78,3 +78,21 @@ docker build -t  rbaroncea/electron-admin .
 
 ## Running the container
 docker run -p 3001:80 --network=electron-network --name=electron-admin rbaroncea/electron-admin
+
+## Deployment
+Set up your favorite HTTP server so that a visitor to your site is served index.html,
+and requests to static paths like /static/js/main.<hash>.js are served with the contents of the /static/js/main.<hash>.js file.
+
+# Static Server
+For environments using Node, the easiest way to handle this would be to install serve and let it handle the rest:
+
+npm install -g serve
+serve -s build
+
+The last command shown above will serve your static site on the port 3000. Like many of serve’s internal settings, the port can be adjusted using the -l or --listen flags:
+
+serve -s build -l 3001 (this port will be used for electron-admin)
+
+Run this command to get a full list of the options available:
+
+serve -h
