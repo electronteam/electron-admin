@@ -61,7 +61,7 @@ class ProductsView extends Component {
 
     getProducts()
     {
-        let api = properties.api.products + `?page=${this.state.page}&size=${this.state.rowsPerPage}`;
+        let api = process.env.REACT_APP_PRODUCTS + `?page=${this.state.page}&size=${this.state.rowsPerPage}`;
         // Read the token from the session storage // and include it to Authorization header
         const token = sessionStorage.getItem("jwt");
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../styles/login.css';
-import {properties} from '../properties.js';
 import { withTranslation } from 'react-i18next';
 
 class Login extends Component {
@@ -20,7 +19,7 @@ class Login extends Component {
 
     login = () => {
         const user = {email: this.state.email, password: this.state.password};
-        let api = properties.api.login;
+        let api = process.env.REACT_APP_LOGIN;
 
         fetch(api, {
             method: 'POST',

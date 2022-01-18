@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {withTranslation} from "react-i18next";
-import {properties} from "../../properties";
 
 class UserDetails extends Component {
 
@@ -25,7 +24,7 @@ class UserDetails extends Component {
 
     getUserDetails(userId)
     {
-        let api = properties.api.userById + "/" + userId;
+        let api = process.env.REACT_APP_USER_BY_ID + "/" + userId;
         const token = sessionStorage.getItem("jwt");
 
         fetch(api, {headers: {'Authorization': token}})

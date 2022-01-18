@@ -25,7 +25,7 @@ class CreateProduct extends Component {
 
     saveProduct(callback)
     {
-        let api = properties.api.createProduct;
+        let api = process.env.REACT_APP_CREATE_PRODUCT;
         const token = sessionStorage.getItem("jwt");
 
         let formData = new FormData();

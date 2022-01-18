@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel, Container} from "@material-ui/core";
+import {Table, TableBody, TableCell, TableRow, Container} from "@material-ui/core";
 import {createStyles, makeStyles} from '@material-ui/core/styles';
-import {properties} from "../../properties";
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import TablePagination from '@material-ui/core/TablePagination';
@@ -58,11 +57,11 @@ const OrdersView = (props) => {
 
     useEffect(() => {
         console.log('USE EFFECT');
-        let api = properties.api.allOrders;
+        let api = process.env.REACT_APP_ORDERS;
         // Read the token from the session storage // and include it to Authorization header
         const token = sessionStorage.getItem("jwt");
 
-        fetch(`http://localhost:8080/api/admin/orders?page=${page}&size=${rowsPerPage}`, {headers: {'Authorization': token}})
+        fetch(api + `?page=${page}&size=${rowsPerPage}`, {headers: {'Authorization': token}})
                 .then(response => response.json())
                 .then(response => {
                     console.log('THEN BLOCK ', response.content);

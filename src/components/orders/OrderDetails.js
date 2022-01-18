@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../../styles/orderdetails.css';
-import {properties} from '../../properties.js';
 import { withTranslation } from 'react-i18next';
 
 class OrderDetails extends Component {
@@ -19,7 +18,7 @@ class OrderDetails extends Component {
     {
         const {match: {params}} = this.props;
         let orderId = params.orderId;
-        let api = properties.api.orderByCode + "/" + orderId;
+        let api = process.env.REACT_APP_ORDER_BY_CODE + "/" + orderId;
         const token = sessionStorage.getItem("jwt");
         let order = {};
 

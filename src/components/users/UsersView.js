@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {properties} from '../../properties.js';
 import {withTranslation} from 'react-i18next';
 import Paper from "@material-ui/core/Paper/Paper";
 import TableContainer from "@material-ui/core/TableContainer";
@@ -60,7 +59,7 @@ class UsersView extends Component {
 
     getUsers()
     {
-        let api = properties.api.users + `?page=${this.state.page}&size=${this.state.rowsPerPage}`;
+        let api = process.env.REACT_APP_USERS + `?page=${this.state.page}&size=${this.state.rowsPerPage}`;
         // Read the token from the session storage // and include it to Authorization header
         const token = sessionStorage.getItem("jwt");
 

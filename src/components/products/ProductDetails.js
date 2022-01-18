@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {properties} from "../../properties";
 import Button from '@material-ui/core/Button';
 import ProductImage from "./ProductImage";
 import '../../styles/productdetails.css';
@@ -31,7 +30,7 @@ class ProductDetails extends Component {
 
     updateProduct(callback)
     {
-        let api = properties.api.updateProduct;
+        let api = process.env.REACT_APP_UPDATE_PRODUCT;
         const token = sessionStorage.getItem("jwt");
 
         let formData = new FormData();
@@ -63,7 +62,7 @@ class ProductDetails extends Component {
 
     getProductDetails(productId)
     {
-        let api = properties.api.productByCode + "/" + productId;
+        let api = process.env.REACT_APP_PRODUCT_BY_CODE + "/" + productId;
         const token = sessionStorage.getItem("jwt");
 
         fetch(api, {headers: {'Authorization': token}})
@@ -87,7 +86,7 @@ class ProductDetails extends Component {
 
     reloadImage()
     {
-        let api = properties.api.getProductImage + "/" + this.state.product.code;
+        let api = process.env.REACT_APP_PRODUCT_IMAGE + "/" + this.state.product.code;
 
         fetch(api)
                 .then(response => response.text())
@@ -108,7 +107,7 @@ class ProductDetails extends Component {
         var data = new FormData();
         data.append("file", imagedata);
         const token = sessionStorage.getItem("jwt");
-        let api = properties.api.uploadProductImage + this.state.product.code;
+        let api = process.env.REACT_APP_UPLOAD_PRODUCT_IMAGE + this.state.product.code;
 
         fetch(api, {
             mode: 'no-cors',

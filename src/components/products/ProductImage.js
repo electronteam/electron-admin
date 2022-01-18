@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {properties} from "../../properties";
 
 class ProductImage extends Component {
     render()
     {
         return (
-                <img src={properties.url.imageServerURL + this.props.imageURL} alt="Imaginea produsului"/>
+                <img src={process.env.REACT_APP_CONTENT_SERVER_URL + this.props.imageURL} alt="Imaginea produsului"/>
         )
     }
 }
